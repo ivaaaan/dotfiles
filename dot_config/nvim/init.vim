@@ -1,6 +1,6 @@
 call plug#begin()
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'morhetz/gruvbox'
+Plug 'ellisonleao/gruvbox.nvim'
 Plug 'vim-test/vim-test'
 Plug 'hashivim/vim-terraform'
 Plug 'nvim-lua/plenary.nvim'
@@ -20,8 +20,10 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'sindrets/diffview.nvim'
 call plug#end()
-
 lua <<EOF
 vim.g.mapleader = ","
 vim.g.cmdheight = 2
@@ -32,21 +34,38 @@ vim.go.splitright = true
 vim.g.limelight_conceal_ctermfg = 100
 vim.g.limelight_conceal_guifg = '#83a598'
 
+vim.g.table_mode_corner_corner = "|"
+
 vim.wo.relativenumber = true
 vim.wo.number = true
 
-vim.cmd("colorscheme gruvbox")
 vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
 vim.cmd("autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE")
 vim.cmd("autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4")
 vim.cmd("autocmd VimEnter * :silent exec '!kill -s SIGWINCH $PPID'")
 vim.cmd("hi SpellBad ctermfg=red guifg=red")
 
+require("gruvbox").setup({
+    contrast = "soft",
+    bold = false
+})
+vim.cmd("colorscheme gruvbox")
 
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
 
 require "lsp_signature".setup {}
 require "nvim-autopairs".setup {}
-require "neogit".setup {}
+require "neogit".setup {
+	sort_branches = "committerdate",
+	integrations = {
+		diffview = true
+	}
+}
 require "lualine".setup {
   options = { theme  = "gruvbox" },
 }
@@ -62,11 +81,18 @@ null_ls.setup {
   }
 }
 
+local chadtree_settings = { 
+  theme = {
+    text_colour_set = "nerdtree_syntax_dark",
+    icon_glyph_set = "devicons"
+  }
+}
+vim.api.nvim_set_var("chadtree_settings", chadtree_settings)
+
 EOF
 
 " chadtree
 nnoremap <leader>v <cmd>CHADopen<cr>
-
 
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
@@ -93,6 +119,7 @@ nnoremap gr <cmd>Telescope lsp_references<cr>
 nnoremap gd <cmd>Telescope lsp_definition<cr>
 
 set completeopt=menu,menuone,noselect
+set termguicolors
 
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
@@ -100,6 +127,9 @@ nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 nmap <silent> <C-g> :Neogit<CR>
+
+map <Space>t :vsplit term://fish<cr>
+tnoremap <Esc> <C-\><C-n>
 
 noremap <leader>1 1gt
 noremap <leader>2 2gt
