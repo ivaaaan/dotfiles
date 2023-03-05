@@ -1,7 +1,6 @@
 call plug#begin()
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ellisonleao/gruvbox.nvim'
-Plug 'vim-test/vim-test'
 Plug 'hashivim/vim-terraform'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -10,7 +9,6 @@ Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'windwp/nvim-autopairs'
-Plug 'TimUntersberger/neogit'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -26,6 +24,7 @@ call plug#end()
 set t_Co=256
 set background=dark
 lua <<EOF
+
 vim.g.mapleader = ","
 vim.g.cmdheight = 2
 vim.g.incsearch = true 
@@ -47,6 +46,7 @@ require("gruvbox").setup({
     bold = false,
     italic = false,
 })
+
 vim.cmd("colorscheme gruvbox")
 
 require'nvim-treesitter.configs'.setup {
@@ -58,12 +58,6 @@ require'nvim-treesitter.configs'.setup {
 
 require "lsp_signature".setup {}
 require "nvim-autopairs".setup {}
-require "neogit".setup {
-	sort_branches = "committerdate",
-	integrations = {
-		diffview = true
-	}
-}
 require "go"
 require "autocomplete"
 require "lsp"
@@ -72,17 +66,26 @@ require "lsp"
 local null_ls = require("null-ls")
 null_ls.setup {
   sources = {
-     null_ls.builtins.formatting.goimports
+     null_ls.builtins.formatting.goimports,
+     null_ls.builtins.diagnostics.cspell,
+     null_ls.builtins.code_actions.cspell,
+     null_ls.builtins.code_actions.gomodifytags
   }
 }
 
 local chadtree_settings = { 
   theme = {
     text_colour_set = "nerdtree_syntax_dark",
-    icon_glyph_set = "devicons"
+    icon_glyph_set = "devicons",
+    icon_colour_set = "none"
   }
 }
+
 vim.api.nvim_set_var("chadtree_settings", chadtree_settings)
+
+vim.keymap.set({ 'n' }, '<Leader>k', function()
+     vim.lsp.buf.signature_help()
+end, { silent = true, noremap = true, desc = 'toggle signature' })
 EOF
 
 highlight Normal ctermbg=NONE
@@ -95,12 +98,9 @@ map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
-
-" vim-test
-let test#strategy = "neovim"
+autocmd FileType go nmap <Leader>t <Plug>(go-test)
+autocmd FileType go nmap <Leader>tf <Plug>(go-test-func)
 
 " terraform
 let g:terraform_align=1
@@ -109,28 +109,14 @@ let g:terraform_align=1
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>b <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap gr <cmd>Telescope lsp_references<cr>
 nnoremap gd <cmd>Telescope lsp_definition<cr>
+nnoremap <space>o <cmd>Telescope lsp_document_symbols<cr>
+nnoremap <space>O <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
 
 set completeopt=menu,menuone,noselect
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
-nmap <silent> <C-g> :Neogit<CR>
 
 map <Space>t :vsplit term://fish<cr>
 tnoremap <Esc> <C-\><C-n>
-
-noremap <leader>1 1gt
-noremap <leader>2 2gt
-noremap <leader>3 3gt
-noremap <leader>4 4gt
-noremap <leader>5 5gt
-noremap <leader>6 6gt
-noremap <leader>7 7gt
-noremap <leader>8 8gt
-noremap <leader>9 9gt
-noremap <leader>0 :tablast<cr>

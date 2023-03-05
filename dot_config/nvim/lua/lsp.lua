@@ -33,10 +33,15 @@ end
 
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local servers = { "gopls", "pylsp" }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup({
+
+nvim_lsp.gopls.setup {
     capabilities = capabilities,
     on_attach = on_attach,
-  })
-end
+    settings = {
+        gopls = {
+            env = {
+                GOFLAGS = "-tags=integration_test,unit_test"
+            }
+        }
+    }
+}
