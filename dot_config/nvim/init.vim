@@ -20,11 +20,10 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'sindrets/diffview.nvim'
+Plug 'TimUntersberger/neogit'
 call plug#end()
-set t_Co=256
-set background=dark
-lua <<EOF
 
+lua <<EOF
 vim.g.mapleader = ","
 vim.g.cmdheight = 2
 vim.g.incsearch = true 
@@ -41,51 +40,17 @@ vim.cmd("autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwid
 vim.cmd("autocmd VimEnter * :silent exec '!kill -s SIGWINCH $PPID'")
 vim.cmd("hi SpellBad ctermfg=red guifg=red")
 
-require("gruvbox").setup({
-    contrast = "soft",
-    bold = false,
-    italic = false,
-})
 
-vim.cmd("colorscheme gruvbox")
-
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-}
-
-require "lsp_signature".setup {}
-require "nvim-autopairs".setup {}
-require "go"
+require "plugins/gruvbox"
+require "plugins/lsp_signature"
+require "plugins/autopairs"
+require "plugins/treesitter"
+require "plugins/go"
+require "plugins/chadtree"
+require "plugins/null-ls"
+require "plugins/neogit"
 require "autocomplete"
 require "lsp"
-
-
-local null_ls = require("null-ls")
-null_ls.setup {
-  sources = {
-     null_ls.builtins.formatting.goimports,
-     null_ls.builtins.diagnostics.cspell,
-     null_ls.builtins.code_actions.cspell,
-     null_ls.builtins.code_actions.gomodifytags
-  }
-}
-
-local chadtree_settings = { 
-  theme = {
-    text_colour_set = "nerdtree_syntax_dark",
-    icon_glyph_set = "devicons",
-    icon_colour_set = "none"
-  }
-}
-
-vim.api.nvim_set_var("chadtree_settings", chadtree_settings)
-
-vim.keymap.set({ 'n' }, '<Leader>k', function()
-     vim.lsp.buf.signature_help()
-end, { silent = true, noremap = true, desc = 'toggle signature' })
 EOF
 
 highlight Normal ctermbg=NONE
@@ -101,9 +66,6 @@ nnoremap <leader>a :cclose<CR>
 autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 autocmd FileType go nmap <Leader>t <Plug>(go-test)
 autocmd FileType go nmap <Leader>tf <Plug>(go-test-func)
-
-" terraform
-let g:terraform_align=1
 
 " telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
