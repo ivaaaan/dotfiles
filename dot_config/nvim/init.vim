@@ -113,6 +113,7 @@ nnoremap <leader>b <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap gr <cmd>Telescope lsp_references<cr>
 nnoremap gd <cmd>Telescope lsp_definition<cr>
+nnoremap gi <cmd>Telescope lsp_implementations<cr>
 nnoremap <space>o <cmd>Telescope lsp_document_symbols<cr>
 nnoremap <space>O <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
 
