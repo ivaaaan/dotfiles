@@ -1,4 +1,4 @@
-call plug#begin()
+,call plug#begin()
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ellisonleao/gruvbox.nvim'
 Plug 'hashivim/vim-terraform'
@@ -21,6 +21,10 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'sindrets/diffview.nvim'
 Plug 'TimUntersberger/neogit'
+Plug 'github/copilot.vim'
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 call plug#end()
 
 lua <<EOF
