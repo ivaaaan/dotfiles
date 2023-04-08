@@ -25,6 +25,10 @@ Plug 'github/copilot.vim'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
+Plug 'leoluz/nvim-dap-go'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'folke/which-key.nvim'
 call plug#end()
 
 lua <<EOF
@@ -53,8 +57,11 @@ require "plugins/go"
 require "plugins/chadtree"
 require "plugins/null-ls"
 require "plugins/neogit"
+require "plugins/dap"
+require "plugins/whichkey"
 require "autocomplete"
 require "lsp"
+require "keymappings"
 EOF
 
 highlight Normal ctermbg=NONE
