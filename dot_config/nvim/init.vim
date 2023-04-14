@@ -29,6 +29,8 @@ Plug 'leoluz/nvim-dap-go'
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'folke/which-key.nvim'
+Plug 'ThePrimeagen/refactoring.nvim'
+Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 call plug#end()
 
 lua <<EOF
@@ -59,6 +61,8 @@ require "plugins/null-ls"
 require "plugins/neogit"
 require "plugins/dap"
 require "plugins/whichkey"
+require "plugins/refactoring"
+require "plugins/toggleterm"
 require "autocomplete"
 require "lsp"
 require "keymappings"

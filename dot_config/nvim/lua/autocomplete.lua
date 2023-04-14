@@ -61,10 +61,10 @@
 -- 
 local lspconfig = require('lspconfig')
 
-vim.g.coq_settings = { auto_start = 'shut-up' }
-require("coq_3p") {
-  { src = "copilot", short_name = "COP", accept_key = "<c-r>" }
+vim.g.coq_settings = {
+  auto_start = true
 }
+require("coq_3p") {}
 
 
 -- Enable some language servers with the additional completion capabilities offered by coq_nvim

@@ -37,3 +37,7 @@ map("n", "<Leader>dbt", require('dap').toggle_breakpoint)
 
 map("n", "<Leader>di", require('dapui').toggle)
 
+map("v", "<Leader>rr", require('telescope').extensions.refactoring.refactors)
+map("n", "<Leader>j", function()
+  require('toggleterm').toggle(1, nil, vim.fn.getcwd(), "float")
+end)
