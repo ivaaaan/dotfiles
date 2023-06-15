@@ -1,4 +1,4 @@
-,call plug#begin()
+,call plug#begin("~/.config/nvim/plugged")
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ellisonleao/gruvbox.nvim'
 Plug 'hashivim/vim-terraform'
@@ -22,9 +22,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'sindrets/diffview.nvim'
 Plug 'TimUntersberger/neogit'
 Plug 'github/copilot.vim'
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 Plug 'leoluz/nvim-dap-go'
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
@@ -61,12 +58,11 @@ require "plugins/null-ls"
 require "plugins/neogit"
 require "plugins/dap"
 require "plugins/whichkey"
-require "plugins/refactoring"
-require "plugins/toggleterm"
 require "autocomplete"
 require "lsp"
 require "keymappings"
 EOF
+
 
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE

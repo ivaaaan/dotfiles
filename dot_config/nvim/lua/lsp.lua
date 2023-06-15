@@ -1,5 +1,3 @@
-local nvim_lsp = require('lspconfig')
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -30,17 +28,25 @@ local on_attach = function(client, bufnr)
 
 end
 
-
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-nvim_lsp.gopls.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-    settings = {
-        gopls = {
-            env = {
-                GOFLAGS = "-tags=integration_test,unit_test"
-            }
-        }
-    }
+local nvim_lsp = require('lspconfig')
+local language_servers = {
+	gopls = {
+		gopls = {
+			env = {
+				GOFLAGS = "-tags=integration_test,unit_test"
+			}
+		}
+	},
+	clangd = {},
+	pyright = {},
 }
+
+for server, config in pairs(language_servers) do
+	nvim_lsp[server].setup(vim.tbl_deep_extend('force', {
+		on_attach = on_attach,
+		capabilities = capabilities,
+		settings = config
+
+	}, config))
+end
