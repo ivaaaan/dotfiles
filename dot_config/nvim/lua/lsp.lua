@@ -39,7 +39,6 @@ local language_servers = {
 		}
 	},
 	clangd = {},
-	pyright = {},
 }
 
 for server, config in pairs(language_servers) do

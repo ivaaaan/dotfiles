@@ -20,7 +20,6 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'sindrets/diffview.nvim'
-Plug 'TimUntersberger/neogit'
 Plug 'github/copilot.vim'
 Plug 'leoluz/nvim-dap-go'
 Plug 'mfussenegger/nvim-dap'
@@ -28,6 +27,8 @@ Plug 'rcarriga/nvim-dap-ui'
 Plug 'folke/which-key.nvim'
 Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+Plug 'davidhalter/jedi-vim'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 lua <<EOF
@@ -55,7 +56,6 @@ require "plugins/treesitter"
 require "plugins/go"
 require "plugins/chadtree"
 require "plugins/null-ls"
-require "plugins/neogit"
 require "plugins/dap"
 require "plugins/whichkey"
 require "autocomplete"
