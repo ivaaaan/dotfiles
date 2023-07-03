@@ -28,7 +28,6 @@ local on_attach = function(client, bufnr)
 
 end
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local nvim_lsp = require('lspconfig')
 local language_servers = {
 	gopls = {
@@ -36,16 +35,17 @@ local language_servers = {
 			env = {
 				GOFLAGS = "-tags=integration_test,unit_test"
 			}
-		}
+		},
 	},
 	clangd = {},
 }
 
 for server, config in pairs(language_servers) do
+	local cap = vim.lsp.protocol.make_client_capabilities()
+	cap = require('cmp_nvim_lsp').default_capabilities(cap)
 	nvim_lsp[server].setup(vim.tbl_deep_extend('force', {
 		on_attach = on_attach,
-		capabilities = capabilities,
+		capabilities = cap,
 		settings = config
-
 	}, config))
 end
