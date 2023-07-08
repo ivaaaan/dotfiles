@@ -38,6 +38,7 @@ local language_servers = {
 		},
 	},
 	clangd = {},
+	terraformls = {},
 }
 
 for server, config in pairs(language_servers) do
