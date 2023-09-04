@@ -29,6 +29,7 @@ Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 Plug 'davidhalter/jedi-vim'
 Plug 'tpope/vim-fugitive'
+Plug 'NeogitOrg/neogit'
 call plug#end()
 
 lua <<EOF
@@ -57,6 +58,7 @@ require "plugins/go"
 require "plugins/chadtree"
 require "plugins/dap"
 require "plugins/whichkey"
+require "plugins/neogit"
 require "autocomplete"
 require "lsp"
 require "keymappings"
