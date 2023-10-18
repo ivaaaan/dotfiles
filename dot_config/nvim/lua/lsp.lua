@@ -39,6 +39,7 @@ local language_servers = {
 	},
 	clangd = {},
 	terraformls = {},
+	pyright = {},
 }
 
 for server, config in pairs(language_servers) do
