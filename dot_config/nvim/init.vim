@@ -1,5 +1,4 @@
 ,call plug#begin("~/.config/nvim/plugged")
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ellisonleao/gruvbox.nvim'
 Plug 'hashivim/vim-terraform'
 Plug 'nvim-lua/plenary.nvim'
@@ -19,6 +18,8 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'ray-x/go.nvim'
+Plug 'ray-x/guihua.lua'
 Plug 'sindrets/diffview.nvim'
 Plug 'github/copilot.vim'
 Plug 'leoluz/nvim-dap-go'
@@ -27,6 +28,7 @@ Plug 'rcarriga/nvim-dap-ui'
 Plug 'folke/which-key.nvim'
 Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'tpope/vim-fugitive'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lualine/lualine.nvim'
 call plug#end()
 
@@ -49,6 +51,7 @@ vim.cmd("hi SpellBad ctermfg=red guifg=red")
 
 
 require "plugins/gruvbox"
+require "lsp"
 require "plugins/lsp_signature"
 require "plugins/autopairs"
 require "plugins/treesitter"
@@ -58,7 +61,6 @@ require "plugins/dap"
 require "plugins/whichkey"
 require "plugins/lualine"
 require "autocomplete"
-require "lsp"
 require "keymappings"
 EOF
 
@@ -72,10 +74,6 @@ nnoremap <leader>v <cmd>CHADopen<cr>
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
-
-autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
-autocmd FileType go nmap <Leader>t <Plug>(go-test)
-autocmd FileType go nmap <Leader>tf <Plug>(go-test-func)
 
 " telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -93,3 +91,4 @@ set completeopt=menu,menuone,noselect
 
 map <Space>t :vsplit term://fish<cr>
 tnoremap <Esc> <C-\><C-n>
+

@@ -1,14 +1,23 @@
-vim.g.go_snippet_engine="UltiSnips"
-vim.g.go_fmt_command = "goimports"
-vim.g.go_highlight_types = 1
-vim.g.go_highlight_fields = 1
-vim.g.go_highlight_functions = 1
-vim.g.go_highlight_function_calls = 1
-vim.g.go_highlight_operators = 1
-vim.g.go_highlight_extra_types = 1
-vim.g.go_highlight_operators = 1
-vim.g.go_highlight_function_parameters = 1
-vim.g.go_highlight_format_strings = 1
-vim.g.go_def_mode = "gopls"
-vim.g.go_info_mode = "gopls"
-vim.g.go_build_tags = "unit_test,integration_test"
+require 'go'.setup({
+  goimport = 'gopls', -- if set to 'gopls' will use golsp format
+  gofmt = 'gopls', -- if set to gopls will use golsp format
+  max_line_len = 120,
+  tag_transform = false,
+  test_dir = '',
+  comment_placeholder = '',
+  lsp_cfg = true, -- false: use your own lspconfig
+  lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
+  lsp_on_attach = true, -- use on_attach from go.nvim
+  dap_debug = true,
+})
+
+
+local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+   require('go.format').goimport()
+  end,
+  group = format_sync_grp,
+})
+
