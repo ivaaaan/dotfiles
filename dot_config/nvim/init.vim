@@ -21,7 +21,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ray-x/go.nvim'
 Plug 'ray-x/guihua.lua'
 Plug 'sindrets/diffview.nvim'
-Plug 'github/copilot.vim'
 Plug 'leoluz/nvim-dap-go'
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
