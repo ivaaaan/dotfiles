@@ -50,8 +50,6 @@ vim.cmd("hi SpellBad ctermfg=red guifg=red")
 
 
 require "plugins/gruvbox"
-require "lsp"
-require "plugins/lsp_signature"
 require "plugins/autopairs"
 require "plugins/treesitter"
 require "plugins/go"
@@ -59,6 +57,8 @@ require "plugins/chadtree"
 require "plugins/dap"
 require "plugins/whichkey"
 require "plugins/lualine"
+require "lsp"
+require "plugins/lsp_signature"
 require "autocomplete"
 require "keymappings"
 EOF
@@ -80,9 +80,6 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>b <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap gr <cmd>Telescope lsp_references<cr>
-nnoremap gd <cmd>Telescope lsp_definition<cr>
-nnoremap gi <cmd>Telescope lsp_implementations<cr>
 nnoremap <space>o <cmd>Telescope lsp_document_symbols<cr>
 nnoremap <space>O <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
 
@@ -90,4 +87,3 @@ set completeopt=menu,menuone,noselect
 
 map <Space>t :vsplit term://fish<cr>
 tnoremap <Esc> <C-\><C-n>
-
