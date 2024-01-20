@@ -1,3 +1,5 @@
+local coq = require('coq')
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -20,14 +22,13 @@ local language_servers = {
 	clangd = {},
 	terraformls = {},
 	pyright = {},
+	texlab = {},
 }
 
 for server, config in pairs(language_servers) do
-	local cap = vim.lsp.protocol.make_client_capabilities()
-	cap = require('cmp_nvim_lsp').default_capabilities(cap)
-	nvim_lsp[server].setup(vim.tbl_deep_extend('force', {
+	local config = vim.tbl_deep_extend('force', {
 		on_attach = on_attach,
-		capabilities = cap,
 		settings = config
-	}, config))
+	}, config)
+	nvim_lsp[server].setup(coq.lsp_ensure_capabilities(config))
 end

@@ -42,6 +42,7 @@ map('n', '<Leader>di', require('dapui').toggle)
 
 map('v', '<Leader>rr', telescope.extensions.refactoring.refactors)
 
+
 -- LSP and Telescope mappings
 map('n', 'gD', vim.lsp.buf.declaration)
 map('n', 'gd', vim.lsp.buf.definition)

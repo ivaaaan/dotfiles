@@ -1,5 +1,6 @@
 ,call plug#begin("~/.config/nvim/plugged")
 Plug 'ellisonleao/gruvbox.nvim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'hashivim/vim-terraform'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -18,8 +19,6 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'ray-x/go.nvim'
-Plug 'ray-x/guihua.lua'
 Plug 'sindrets/diffview.nvim'
 Plug 'leoluz/nvim-dap-go'
 Plug 'mfussenegger/nvim-dap'
@@ -29,7 +28,14 @@ Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'folke/trouble.nvim'
+Plug 'ms-jpq/coq_nvim'
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
+Plug 'fatih/vim-go'
 call plug#end()
+
+let g:coq_settings = { 'auto_start': v:true }
 
 lua <<EOF
 vim.g.mapleader = ","
@@ -49,7 +55,7 @@ vim.cmd("autocmd VimEnter * :silent exec '!kill -s SIGWINCH $PPID'")
 vim.cmd("hi SpellBad ctermfg=red guifg=red")
 
 
-require "plugins/gruvbox"
+require "plugins/colorscheme"
 require "plugins/autopairs"
 require "plugins/treesitter"
 require "plugins/go"
@@ -87,3 +93,18 @@ set completeopt=menu,menuone,noselect
 
 map <Space>t :vsplit term://fish<cr>
 tnoremap <Esc> <C-\><C-n>
+
+autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <Leader>t <Plug>(go-test)
+autocmd FileType go nmap <Leader>tf <Plug>(go-test-func)
+
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
