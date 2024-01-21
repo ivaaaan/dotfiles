@@ -1,6 +1,8 @@
 source ~/.config/fish/git.fish
 source ~/.config/fish/aliases.fish
 
+set -U FZF_TMUX 1
+
 set fish_greeting
 
 fish_vi_key_bindings
