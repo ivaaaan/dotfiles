@@ -25,5 +25,5 @@ and not set -q TMUX
 end
 
 set -gx PATH $PATH $HOME/.krew/bin
-set -lx KUBECONFIG (string join ':' ~/.kube/config-*)
+set -gx KUBECONFIG (string join ':' ~/.kube/config-*)
 kubectl completion fish | source
