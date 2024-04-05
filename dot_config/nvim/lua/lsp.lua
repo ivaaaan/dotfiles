@@ -23,12 +23,31 @@ local language_servers = {
 	terraformls = {},
 	pyright = {},
 	texlab = {},
+	["rust_analyzer"] = {
+	    imports = {
+		granularity = {
+		    group = "module",
+		},
+		prefix = "self",
+	    },
+	    cargo = {
+		buildScripts = {
+		    enable = true,
+		},
+	    },
+	    procMacro = {
+		enable = true
+	    },
+	}
 }
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 for server, config in pairs(language_servers) do
 	local config = vim.tbl_deep_extend('force', {
 		on_attach = on_attach,
-		settings = config
+		settings = config,
+		capabilities = capabilities
 	}, config)
-	nvim_lsp[server].setup(coq.lsp_ensure_capabilities(config))
+	-- nvim_lsp[server].setup(coq.lsp_ensure_capabilities(config))
+	nvim_lsp[server].setup(config)
 end

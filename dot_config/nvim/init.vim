@@ -27,15 +27,16 @@ Plug 'folke/which-key.nvim'
 Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'folke/trouble.nvim'
 Plug 'ms-jpq/coq_nvim'
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 Plug 'fatih/vim-go'
+Plug 'towolf/vim-helm'
+Plug 'szw/vim-maximizer'
 call plug#end()
-
-let g:coq_settings = { 'auto_start': v:true }
 
 lua <<EOF
 vim.g.mapleader = ","
@@ -74,7 +75,7 @@ highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
 
 " chadtree
-nnoremap <leader>v <cmd>CHADopen<cr>
+ nnoremap <leader>v <cmd>CHADopen<cr>
 
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
@@ -107,4 +108,9 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
+noremap <C-w>m :MaximizerToggle<CR>
 
+map <up> <C-w><up>
+map <down> <C-w><down>
+map <left> <C-w><left>
+map <right> <C-w><right>
