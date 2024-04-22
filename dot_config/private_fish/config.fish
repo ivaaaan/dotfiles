@@ -6,11 +6,9 @@ set -U FZF_TMUX 1
 set fish_greeting
 
 fish_vi_key_bindings
-fish_add_path ~/go/bin
-fish_add_path ~/.cargo/bin
-fish_add_path /usr/local/go/bin
 
-set PATH $RUSTPATH $GOPATH $PATH $PATHTOGO $BIN
+fish_add_path $RUSTPATH $GOPATH $PATH $PATHTOGO $BIN ~/bin
+
 set EDITOR nvim
 set HISTCONTROL ignorespace
 set FZF_DEFAULT_COMMAND 'rg --hidden --files --ignore-file .git/'
@@ -23,6 +21,8 @@ if status is-interactive
 and not set -q TMUX
   exec tmux -u
 end
+
+xset r rate 250 100
 
 set -gx PATH $PATH $HOME/.krew/bin
 set -gx KUBECONFIG (string join ':' ~/.kube/config-*)

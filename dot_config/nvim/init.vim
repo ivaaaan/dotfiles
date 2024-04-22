@@ -36,6 +36,8 @@ Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 Plug 'fatih/vim-go'
 Plug 'towolf/vim-helm'
 Plug 'szw/vim-maximizer'
+Plug 'dracula/vim'
+Plug 'nvim-neotest/nvim-nio'
 call plug#end()
 
 lua <<EOF
@@ -109,6 +111,7 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 noremap <C-w>m :MaximizerToggle<CR>
+hi Normal guibg=NONE ctermbg=NONE
 
 map <up> <C-w><up>
 map <down> <C-w><down>
