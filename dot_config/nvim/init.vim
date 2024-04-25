@@ -38,6 +38,7 @@ Plug 'towolf/vim-helm'
 Plug 'szw/vim-maximizer'
 Plug 'dracula/vim'
 Plug 'nvim-neotest/nvim-nio'
+Plug 'rmagatti/auto-session'
 call plug#end()
 
 lua <<EOF
@@ -66,6 +67,7 @@ require "plugins/chadtree"
 require "plugins/dap"
 require "plugins/whichkey"
 require "plugins/lualine"
+require "plugins/autosession"
 require "lsp"
 require "plugins/lsp_signature"
 require "autocomplete"
