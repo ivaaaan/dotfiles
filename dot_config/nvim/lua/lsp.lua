@@ -52,9 +52,3 @@ for server, config in pairs(language_servers) do
 	nvim_lsp[server].setup(config)
 end
 
--- todo: move
-require('fzf-lua').setup({
-	winopts = {
-		split = 'belowright new'
-	}
-})

@@ -58,6 +58,7 @@ vim.keymap.set("n", "gR", function() require("trouble").toggle("lsp_references")
 local fzflua = require("fzf-lua")
 
 map('n', '<Leader>ff', fzflua.files)
+map('n', '<Leader>fg', fzflua.live_grep_native)
 map('n', 'gr', fzflua.lsp_references)
 map('n', 'gi', fzflua.lsp_implementations)
 map('n', 'gR', fzflua.lsp_definitions)

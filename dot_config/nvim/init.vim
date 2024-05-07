@@ -76,7 +76,7 @@ require "keymappings"
 
 require('fzf-lua').setup({
 	winopts = {
-		split = 'belowright new',
+		split = 'botright new',
 		preview = {
 			hidden = 'nohidden', --hidden|nohidden
 	 	}
