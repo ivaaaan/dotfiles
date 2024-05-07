@@ -39,6 +39,7 @@ Plug 'szw/vim-maximizer'
 Plug 'dracula/vim'
 Plug 'nvim-neotest/nvim-nio'
 Plug 'rmagatti/auto-session'
+Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 call plug#end()
 
 lua <<EOF
@@ -72,6 +73,15 @@ require "lsp"
 require "plugins/lsp_signature"
 require "autocomplete"
 require "keymappings"
+
+require('fzf-lua').setup({
+	winopts = {
+		split = 'belowright new',
+		preview = {
+			hidden = 'nohidden', --hidden|nohidden
+	 	}
+	}
+})
 EOF
 
 
@@ -79,20 +89,12 @@ highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
 
 " chadtree
- nnoremap <leader>v <cmd>CHADopen<cr>
+" nnoremap <leader>v <cmd>CHADopen<cr>
 
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 
-" telescope
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>b <cmd>Telescope current_buffer_fuzzy_find<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <space>o <cmd>Telescope lsp_document_symbols<cr>
-nnoremap <space>O <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
 
 set completeopt=menu,menuone,noselect
 

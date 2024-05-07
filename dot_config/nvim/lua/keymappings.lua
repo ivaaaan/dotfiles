@@ -9,8 +9,6 @@ function map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, options)
 end
 
-local telescope = require('telescope')
-local tbuiltin = require('telescope.builtin')
 
 map('n', '<F4>', require('dapui').toggle)
 map('n', '<F5>', require('dap').toggle_breakpoint)
@@ -40,14 +38,10 @@ map('n', '<Leader>dbt', require('dap').toggle_breakpoint)
 
 map('n', '<Leader>di', require('dapui').toggle)
 
-map('v', '<Leader>rr', telescope.extensions.refactoring.refactors)
-
 
 -- LSP and Telescope mappings
 map('n', 'gD', vim.lsp.buf.declaration)
 map('n', 'gd', vim.lsp.buf.definition)
-map('n', 'gr', tbuiltin.lsp_references)
-map('n', 'gi', tbuiltin.lsp_implementations)
 map('n', '<space>rn', vim.lsp.buf.rename)
 map('n', '<space>ca', vim.lsp.buf.code_action)
 map('n', '[d', vim.diagnostic.goto_prev)
@@ -59,3 +53,13 @@ vim.keymap.set("n", "<leader>xd", function() require("trouble").toggle("document
 vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end)
 vim.keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end)
 vim.keymap.set("n", "gR", function() require("trouble").toggle("lsp_references") end)
+
+--fzf-lua
+local fzflua = require("fzf-lua")
+
+map('n', '<Leader>ff', fzflua.files)
+map('n', 'gr', fzflua.lsp_references)
+map('n', 'gi', fzflua.lsp_implementations)
+map('n', 'gR', fzflua.lsp_definitions)
+map('n', '<Space>ca', fzflua.lsp_code_actions)
+map('n', '<Leader>bb', fzflua.builtin)
