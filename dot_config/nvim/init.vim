@@ -89,7 +89,7 @@ highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
 
 " chadtree
-" nnoremap <leader>v <cmd>CHADopen<cr>
+nnoremap <leader>v <cmd>CHADopen<cr>
 
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
