@@ -15,8 +15,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'sindrets/diffview.nvim'
@@ -40,6 +39,8 @@ Plug 'dracula/vim'
 Plug 'nvim-neotest/nvim-nio'
 Plug 'rmagatti/auto-session'
 Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
+Plug 'rafamadriz/friendly-snippets'
 call plug#end()
 
 lua <<EOF

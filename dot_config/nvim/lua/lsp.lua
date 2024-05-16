@@ -52,3 +52,4 @@ for server, config in pairs(language_servers) do
 	nvim_lsp[server].setup(config)
 end
 
+require("luasnip.loaders.from_vscode").lazy_load()
