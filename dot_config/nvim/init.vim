@@ -41,6 +41,7 @@ Plug 'rmagatti/auto-session'
 Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
 Plug 'rafamadriz/friendly-snippets'
+Plug 'f3fora/cmp-spell'
 call plug#end()
 
 lua <<EOF
@@ -60,6 +61,9 @@ vim.cmd("autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwid
 vim.cmd("autocmd VimEnter * :silent exec '!kill -s SIGWINCH $PPID'")
 vim.cmd("hi SpellBad ctermfg=red guifg=red")
 
+vim.opt.spell = true
+vim.opt.spelllang = { "en_us" }
+vim.opt.spelloptions = "camel"
 
 require "plugins/colorscheme"
 require "plugins/autopairs"
