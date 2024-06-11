@@ -66,12 +66,12 @@ bindsym XF86MonBrightnessUp exec light -A 2
 bindsym XF86MonBrightnessDown exec light -U 2
 
 bindsym $mod+Return exec alacritty
-bindsym $mod+shift+t exec ~/bin/focus_or_launch telegram "telegram-desktop --class telegram"
-bindsym $mod+shift+d exec ~/bin/focus_or_launch alacritty "alacritty --class alacritty"
-bindsym $mod+shift+o exec ~/bin/focus_or_launch obsidian "obsidian --class obsidian"
-bindsym $mod+shift+x exec ~/bin/focus_or_launch keepassxc "keepassxc --class keepassxc"
-bindsym $mod+shift+w exec ~/bin/focus_or_launch "org.mozilla.firefox" "firefox --class firefox"
-bindsym $mod+shift+b exec swaylock -k
+bindsym $mod+Ctrl+t exec ~/bin/focus_or_launch telegram "telegram-desktop --class telegram"
+bindsym $mod+Ctrl+d exec ~/bin/focus_or_launch alacritty "alacritty --class alacritty"
+bindsym $mod+Ctrl+o exec ~/bin/focus_or_launch obsidian "obsidian --class obsidian"
+bindsym $mod+Ctrl+x exec ~/bin/focus_or_launch keepassxc "keepassxc --class keepassxc"
+bindsym $mod+Ctrl+w exec ~/bin/focus_or_launch "org.mozilla.firefox" "firefox --class firefox"
+bindsym $mod+Ctrl+b exec swaylock -k
 bindsym $mod+right workspace next_on_output
 bindsym $mod+left workspace prev_on_output
 
