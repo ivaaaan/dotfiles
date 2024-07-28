@@ -1,5 +1,4 @@
 ,call plug#begin("~/.config/nvim/plugged")
-Plug 'ellisonleao/gruvbox.nvim'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'hashivim/vim-terraform'
 Plug 'nvim-lua/plenary.nvim'
@@ -9,7 +8,6 @@ Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'windwp/nvim-autopairs'
-Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -29,9 +27,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'folke/trouble.nvim'
-Plug 'ms-jpq/coq_nvim'
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 Plug 'fatih/vim-go'
 Plug 'towolf/vim-helm'
 Plug 'szw/vim-maximizer'
@@ -42,8 +37,10 @@ Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
 Plug 'rafamadriz/friendly-snippets'
 Plug 'f3fora/cmp-spell'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
+source "coc.vim"
 lua <<EOF
 vim.g.mapleader = ","
 vim.g.cmdheight = 2
@@ -76,19 +73,15 @@ require "plugins/lualine"
 require "plugins/autosession"
 require "lsp"
 require "plugins/lsp_signature"
-require "autocomplete"
+require "plugins/coc"
 require "keymappings"
 
-require('fzf-lua').setup({
-	winopts = {
-		split = 'botright new',
-		preview = {
+require('fzf-lua').setup({ winopts = { split = 'botright new', preview = {
 			hidden = 'nohidden', --hidden|nohidden
 	 	}
 	}
 })
 EOF
-
 
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
@@ -126,3 +119,13 @@ map <up> <C-w><up>
 map <down> <C-w><down>
 map <left> <C-w><left>
 map <right> <C-w><right>
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()

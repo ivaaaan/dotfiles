@@ -1,5 +1,3 @@
-local coq = require('coq')
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -13,44 +11,13 @@ end
 local nvim_lsp = require('lspconfig')
 local language_servers = {
 	gopls = {
-		gopls = {
-			env = {
-				GOFLAGS = "-tags=integration_test,unit_test"
-			},
-
-		gofumpt = true,
-		codelenses = {
-		  gc_details = false,
-		  generate = true,
-		  regenerate_cgo = true,
-		  run_govulncheck = true,
-		  test = true,
-		  tidy = true,
-		  upgrade_dependency = true,
-		  vendor = true,
-		},
-		hints = {
-		  assignVariableTypes = true,
-		  compositeLiteralFields = true,
-		  compositeLiteralTypes = true,
-		  constantValues = true,
-		  functionTypeParameters = true,
-		  parameterNames = true,
-		  rangeVariableTypes = true,
-		},
-		analyses = {
-		  fieldalignment = true,
-		  nilness = true,
-		  unusedparams = true,
-		  unusedwrite = true,
-		  useany = true,
-		},
-		usePlaceholders = true,
-		completeUnimported = true,
-		staticcheck = true,
-		directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-		semanticTokens = true,
-		},
+		 gopls = {
+			 analyses = {
+				unusedparams = true,
+			 },
+			 staticcheck = true,
+			 gofumpt = true,
+		}
 	},
 	clangd = {},
 	terraformls = {},
@@ -87,7 +54,6 @@ for server, config in pairs(language_servers) do
 		settings = config,
 		capabilities = capabilities
 	}, config)
-	-- nvim_lsp[server].setup(coq.lsp_ensure_capabilities(config))
 	nvim_lsp[server].setup(config)
 end
 
