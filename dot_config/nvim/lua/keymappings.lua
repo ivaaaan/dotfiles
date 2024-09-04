@@ -52,7 +52,6 @@ vim.keymap.set("n", "<leader>xw", function() require("trouble").toggle("workspac
 vim.keymap.set("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end)
 vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end)
 vim.keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end)
-vim.keymap.set("n", "gR", function() require("trouble").toggle("lsp_references") end)
 
 --fzf-lua
 local fzflua = require("fzf-lua")
@@ -62,6 +61,8 @@ map('n', '<Leader>fg', fzflua.live_grep_native)
 map('n', '<Leader>gc', fzflua.git_bcommits)
 map('n', '<Leader>wd', fzflua.lsp_document_symbols)
 map('n', '<Leader>ww', fzflua.lsp_live_workspace_symbols)
+map('n', '<Leader>xx', fzflua.lsp_workspace_diagnostics)
+map('n', 'T', fzflua.tabs)
 map('n', '<Leader>m', fzflua.marks)
 map('n', 'gr', fzflua.lsp_references)
 map('n', 'gi', fzflua.lsp_implementations)
@@ -69,7 +70,8 @@ map('n', 'gR', fzflua.lsp_definitions)
 map('n', '<Space>ca', fzflua.lsp_code_actions)
 map('n', '<Leader>gb', fzflua.git_branches)
 map('n', '<Leader>//', fzflua.resume)
-
-
 map('n', '<Leader>gs', '<cmd> Git<CR>')
 map('n', '<Leader>gp', '<cmd> Git push<CR>')
+                
+
+map('n', 'DH', '<cmd> DiffviewFileHistory %<cr>')

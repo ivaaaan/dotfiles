@@ -27,7 +27,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'folke/trouble.nvim'
-Plug 'fatih/vim-go'
 Plug 'towolf/vim-helm'
 Plug 'szw/vim-maximizer'
 Plug 'dracula/vim'
@@ -38,6 +37,11 @@ Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
 Plug 'rafamadriz/friendly-snippets'
 Plug 'f3fora/cmp-spell'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'neovim/nvim-lspconfig'
+Plug 'ray-x/go.nvim'
+Plug 'ray-x/guihua.lua'
+Plug 'sindrets/diffview.nvim'
 call plug#end()
 
 source "coc.vim"
@@ -65,7 +69,6 @@ vim.opt.spelloptions = "camel"
 require "plugins/colorscheme"
 require "plugins/autopairs"
 require "plugins/treesitter"
-require "plugins/go"
 require "plugins/chadtree"
 require "plugins/dap"
 require "plugins/whichkey"
@@ -74,7 +77,9 @@ require "plugins/autosession"
 require "lsp"
 require "plugins/lsp_signature"
 require "plugins/coc"
+require "plugins/go"
 require "keymappings"
+require("trouble").setup()
 
 require('fzf-lua').setup({ winopts = { split = 'botright new', preview = {
 			hidden = 'nohidden', --hidden|nohidden
