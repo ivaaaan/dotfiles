@@ -119,6 +119,8 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 noremap <C-w>m :MaximizerToggle<CR>
 hi Normal guibg=NONE ctermbg=NONE
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
 
 map <up> <C-w><up>
 map <down> <C-w><down>
