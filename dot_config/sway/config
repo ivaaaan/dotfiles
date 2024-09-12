@@ -27,8 +27,6 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+h move right
 
-bindsym $mod+f fullscreen toggle
-
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
@@ -66,12 +64,11 @@ bindsym XF86MonBrightnessUp exec light -A 2
 bindsym XF86MonBrightnessDown exec light -U 2
 
 bindsym $mod+Return exec alacritty
-bindsym $mod+Ctrl+t exec ~/bin/focus_or_launch telegram "telegram-desktop --class telegram"
-bindsym $mod+Ctrl+d exec ~/bin/focus_or_launch alacritty "alacritty --class alacritty"
-bindsym $mod+Ctrl+o exec ~/bin/focus_or_launch obsidian "obsidian --class obsidian"
-bindsym $mod+Ctrl+x exec ~/bin/focus_or_launch keepassxc "keepassxc --class keepassxc"
-bindsym $mod+Ctrl+w exec ~/bin/focus_or_launch "org.mozilla.firefox" "firefox --class firefox"
-bindsym $mod+Ctrl+b exec swaylock -k
+bindsym $mod+t exec ~/bin/focus_or_launch telegram "telegram-desktop --class telegram"
+bindsym $mod+o exec ~/bin/focus_or_launch obsidian "obsidian --class obsidian"
+bindsym $mod+x exec ~/bin/focus_or_launch keepassxc "keepassxc --class keepassxc"
+bindsym $mod+f exec ~/bin/focus_or_launch "org.mozilla.firefox" "firefox --class firefox"
+bindsym $mod+b exec swaylock -k
 bindsym $mod+right workspace next_on_output
 bindsym $mod+left workspace prev_on_output
 
@@ -91,8 +88,8 @@ input type:keyboard {
 input type:touchpad {
     dwt enabled
     accel_profile "flat"
-    pointer_accel 0.1
-    scroll_factor 0.1
+    pointer_accel 0.5
+    scroll_factor 0.5
 }
 
 output * background ~/stuff/gruv-portal-cake.png fill
@@ -117,10 +114,6 @@ for_window [app_id="$ddterm-id"] {
   $ddterm-resize
   move to scratchpad
   scratchpad show
-}
-
-for_window [app_id="firefox"] {
-   floating enable
 }
 
 bindsym $mod+equal exec swaymsg '[app_id="$ddterm-id"] scratchpad show' \

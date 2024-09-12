@@ -42,6 +42,8 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'ray-x/go.nvim'
 Plug 'ray-x/guihua.lua'
 Plug 'sindrets/diffview.nvim'
+Plug 'shellRaining/hlchunk.nvim'
+Plug 'nvim-treesitter/nvim-treesitter-context'
 call plug#end()
 
 source "coc.vim"
@@ -71,9 +73,11 @@ require "plugins/autopairs"
 require "plugins/treesitter"
 require "plugins/chadtree"
 require "plugins/dap"
+require "plugins/context"
 require "plugins/whichkey"
 require "plugins/lualine"
 require "plugins/autosession"
+require "plugins/hlchunk"
 require "lsp"
 require "plugins/lsp_signature"
 require "plugins/coc"
