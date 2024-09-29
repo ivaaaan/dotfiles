@@ -46,6 +46,7 @@ Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'stevearc/oil.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'echasnovski/mini.nvim'
+Plug 'lewis6991/gitsigns.nvim'
 call plug#end()
 
 source "coc.vim"
@@ -83,6 +84,7 @@ require "plugins/hlchunk"
 require "lsp"
 require "plugins/lsp_signature"
 require "plugins/coc"
+require "plugins/gitsigns"
 require "plugins/go"
 require "keymappings"
 require("trouble").setup()
