@@ -17,12 +17,15 @@ local language_servers = {
 			 },
 			 staticcheck = true,
 			 gofumpt = true,
-		}
+			 buildFlags =  {"-tags=integration"}
+
+		},
 	},
 	clangd = {},
 	terraformls = {},
 	pyright = {},
 	texlab = {},
+	["ts_ls"] = {},
 	["rust_analyzer"] = {
 	    imports = {
 		granularity = {

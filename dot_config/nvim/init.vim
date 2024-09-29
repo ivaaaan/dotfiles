@@ -20,7 +20,6 @@ Plug 'sindrets/diffview.nvim'
 Plug 'leoluz/nvim-dap-go'
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
-Plug 'folke/which-key.nvim'
 Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -44,6 +43,9 @@ Plug 'ray-x/guihua.lua'
 Plug 'sindrets/diffview.nvim'
 Plug 'shellRaining/hlchunk.nvim'
 Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'stevearc/oil.nvim'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'echasnovski/mini.nvim'
 call plug#end()
 
 source "coc.vim"
@@ -72,9 +74,9 @@ require "plugins/colorscheme"
 require "plugins/autopairs"
 require "plugins/treesitter"
 require "plugins/chadtree"
+require "plugins/oil"
 require "plugins/dap"
 require "plugins/context"
-require "plugins/whichkey"
 require "plugins/lualine"
 require "plugins/autosession"
 require "plugins/hlchunk"
