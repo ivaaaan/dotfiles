@@ -2,54 +2,38 @@
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'hashivim/vim-terraform'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'neovim/nvim-lspconfig'
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
-Plug 'ryanoasis/vim-devicons'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'windwp/nvim-autopairs'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'sindrets/diffview.nvim'
-Plug 'leoluz/nvim-dap-go'
-Plug 'mfussenegger/nvim-dap'
-Plug 'rcarriga/nvim-dap-ui'
-Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'folke/trouble.nvim'
 Plug 'towolf/vim-helm'
-Plug 'szw/vim-maximizer'
 Plug 'dracula/vim'
 Plug 'nvim-neotest/nvim-nio'
 Plug 'rmagatti/auto-session'
 Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
-Plug 'rafamadriz/friendly-snippets'
-Plug 'f3fora/cmp-spell'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'ray-x/go.nvim'
 Plug 'ray-x/guihua.lua'
 Plug 'sindrets/diffview.nvim'
-Plug 'shellRaining/hlchunk.nvim'
-Plug 'nvim-treesitter/nvim-treesitter-context'
-Plug 'stevearc/oil.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
-Plug 'echasnovski/mini.nvim'
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'stevearc/conform.nvim'
+Plug 'zbirenbaum/copilot.lua'
+Plug 'takac/vim-hardtime'
 call plug#end()
 
-source "coc.vim"
+let g:coq_settings = { 'auto_start': v:true }
+let g:hardtime_default_on = 1
+
 lua <<EOF
 vim.g.mapleader = ","
 vim.g.cmdheight = 2
@@ -75,25 +59,42 @@ require "plugins/colorscheme"
 require "plugins/autopairs"
 require "plugins/treesitter"
 require "plugins/chadtree"
-require "plugins/oil"
-require "plugins/dap"
-require "plugins/context"
 require "plugins/lualine"
 require "plugins/autosession"
-require "plugins/hlchunk"
 require "lsp"
 require "plugins/lsp_signature"
-require "plugins/coc"
 require "plugins/gitsigns"
 require "plugins/go"
+require "plugins/copilot"
 require "keymappings"
 require("trouble").setup()
+require "commands"
 
 require('fzf-lua').setup({ winopts = { split = 'botright new', preview = {
-			hidden = 'nohidden', --hidden|nohidden
-	 	}
-	}
+	hidden = 'nohidden', --hidden|nohidden
+}
+}})
+
+-- require("conform").setup({
+--   formatters_by_ft = {
+--     lua = { "stylua" },
+--     python = { "black" },
+--     rust = { "rustfmt", lsp_format = "fallback" },
+--     javascript = { "prettierd", "prettier", stop_after_first = true },
+--     go = { "gofmt", "gofumpt", lsp_format = "fallback"},
+--     html = {"superhtml"},
+--     css = {
+-- 	command = "stylelint --config=$HOME/.stylelintrc.js"
+--     }
+--   },
+-- })
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function(args)
+    require("conform").format({ bufnr = args.buf })
+  end,
 })
+
 EOF
 
 highlight Normal ctermbg=NONE
@@ -127,8 +128,11 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 noremap <C-w>m :MaximizerToggle<CR>
 hi Normal guibg=NONE ctermbg=NONE
+
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
+nnoremap <C-t> :tabnew<CR>
+nnoremap <C-x> :tabclose<CR>
 
 map <up> <C-w><up>
 map <down> <C-w><down>
@@ -140,7 +144,3 @@ function! CheckBackspace() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-inoremap <silent><expr> <Tab>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()

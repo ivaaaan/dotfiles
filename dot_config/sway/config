@@ -51,6 +51,12 @@ bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+F move container to workspace web
+
+bindsym $mod+Control+Shift+Right move workspace to output right 
+bindsym $mod+Control+Shift+Left move workspace to output left 
+bindsym $mod+Control+Shift+Down move workspace to output down 
+bindsym $mod+Control+Shift+Up move workspace to output up
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -94,11 +100,12 @@ input type:touchpad {
 
 output * background ~/stuff/gruv-portal-cake.png fill
 output "eDP-1" {
-  scale 2.1
+  scale 1.8
 }
 
+output "HDMI-A-1" mode 2560x1440@120Hz
 output "HDMI-A-1" {
-  scale 1.5
+  scale 1.1 
 }
 
 assign [app_id="telegram"] workspace tg

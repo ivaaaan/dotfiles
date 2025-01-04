@@ -1,5 +1,6 @@
 source ~/.config/fish/git.fish
 source ~/.config/fish/aliases.fish
+source ~/.config/fish/work.fish
 
 set -U FZF_TMUX 1
 
