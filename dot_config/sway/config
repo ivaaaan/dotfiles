@@ -103,9 +103,9 @@ output "eDP-1" {
   scale 1.8
 }
 
-output "HDMI-A-1" mode 2560x1440@120Hz
 output "HDMI-A-1" {
-  scale 1.1 
+  scale 1.0 
+  mode 2560x1440@143Hz
 }
 
 assign [app_id="telegram"] workspace tg

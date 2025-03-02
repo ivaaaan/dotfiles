@@ -20,7 +20,7 @@
     },
 
     "clock#waw": {
-    	"timezone": "Asia/Bangkok",
+    	"timezone": "Europe/Warsaw",
         "format": "{:%d.%m.%Y | %H:%M}"
     },
     "clock#utc": {

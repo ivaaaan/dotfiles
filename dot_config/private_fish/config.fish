@@ -2,6 +2,7 @@ source ~/.config/fish/git.fish
 source ~/.config/fish/aliases.fish
 source ~/.config/fish/work.fish
 
+fzf --fish | source
 set -U FZF_TMUX 1
 
 set fish_greeting

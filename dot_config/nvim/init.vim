@@ -27,14 +27,24 @@ Plug 'sindrets/diffview.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'stevearc/conform.nvim'
-Plug 'zbirenbaum/copilot.lua'
 Plug 'takac/vim-hardtime'
+Plug 'github/copilot.vim'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 call plug#end()
 
-let g:coq_settings = { 'auto_start': v:true }
-let g:hardtime_default_on = 1
-
 lua <<EOF
+vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
+  expr = true,
+  replace_keycodes = false
+})
+vim.g.copilot_no_tab_map = true
+
 vim.g.mapleader = ","
 vim.g.cmdheight = 2
 vim.g.incsearch = true 
@@ -65,10 +75,9 @@ require "lsp"
 require "plugins/lsp_signature"
 require "plugins/gitsigns"
 require "plugins/go"
-require "plugins/copilot"
 require "keymappings"
 require("trouble").setup()
-require "commands"
+--require "commands"
 
 require('fzf-lua').setup({ winopts = { split = 'botright new', preview = {
 	hidden = 'nohidden', --hidden|nohidden

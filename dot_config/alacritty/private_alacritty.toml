@@ -139,4 +139,4 @@ x = 7
 y = 10
 
 [general]
-import = ["/home/ivan/.config/alacritty/theme.toml"]
+import = ["/home/ivan/.config/alacritty/catppuccin-macchiato.toml"]
