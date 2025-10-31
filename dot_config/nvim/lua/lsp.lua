@@ -16,11 +16,6 @@ local nvim_lsp = require("lspconfig")
 local language_servers = {
 	gopls = {
 		gopls = {
-			analyses = {
-				unusedparams = true,
-			},
-			staticcheck = true,
-			gofumpt = true,
 			buildFlags = { "-tags=integration" },
 		},
 	},
