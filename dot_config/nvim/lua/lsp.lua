@@ -81,13 +81,29 @@ local language_servers = {
   --
 --
 --
+--
+local ls = require("luasnip")
+
+ls.filetype_extend("javascript", { "javascriptreact", "typescriptreact" })
+ls.filetype_extend("go", { "go" })
+
+require("luasnip.loaders.from_vscode").lazy_load()
+
 require("blink.cmp").setup({
-    keymap = { preset = 'default' },
+    keymap = {
+        preset = 'default' ,
+	['<CR>'] = {'accept', 'fallback'},
+	['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
+	['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
+	['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
+    },
     completion = { documentation = { auto_show = true } },
     sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
-    fuzzy = { implementation = "prefer_rust_with_warning" }
+    fuzzy = { implementation = "prefer_rust_with_warning" },
+    snippets = { preset = 'luasnip'},
+    signature = { enabled = true }
 
 })
 
