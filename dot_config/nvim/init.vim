@@ -37,6 +37,8 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'ellisonleao/gruvbox.nvim'
+Plug'saghen/blink.cmp', { 'tag': 'v1.*' }
+
 call plug#end()
 
 lua <<EOF
