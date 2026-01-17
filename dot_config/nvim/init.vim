@@ -8,7 +8,6 @@ Plug 'windwp/nvim-autopairs'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-fugitive'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'folke/trouble.nvim'
 Plug 'towolf/vim-helm'
@@ -39,6 +38,8 @@ Plug 'ellisonleao/gruvbox.nvim'
 Plug'saghen/blink.cmp', { 'tag': 'v1.*' }
 Plug 'rafamadriz/friendly-snippets'
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'} 
+Plug 'greggh/claude-code.nvim'
+Plug 'mrcjkb/rustaceanvim'
 call plug#end()
 
 lua <<EOF
@@ -74,6 +75,7 @@ require "plugins/treesitter"
 require "plugins/chadtree"
 require "plugins/lualine"
 require "plugins/autosession"
+require "plugins/claudecode"
 require "lsp"
 require "plugins/lsp_signature"
 require "plugins/gitsigns"
@@ -86,6 +88,7 @@ require('fzf-lua').setup({ winopts = { split = 'botright new', preview = {
 	hidden = 'nohidden', --hidden|nohidden
 }
 }})
+
 
 -- require("conform").setup({
 --   formatters_by_ft = {

@@ -31,22 +31,6 @@ local language_servers = {
 	},
 	texlab = {},
 	["ts_ls"] = {},
-	["rust_analyzer"] = {
-		imports = {
-			granularity = {
-				group = "module",
-			},
-			prefix = "self",
-		},
-		cargo = {
-			buildScripts = {
-				enable = true,
-			},
-		},
-		procMacro = {
-			enable = true,
-		},
-	},
 	html = {
 		format = {
 			templating = true,
@@ -66,7 +50,7 @@ local language_servers = {
 	      url = "https://www.schemastore.org/api/json/catalog.json",
 	    },
 	  },
-	}
+	},
 }
 
 local ls = require("luasnip")
