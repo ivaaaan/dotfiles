@@ -20,8 +20,7 @@ Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 Plug 'neovim/nvim-lspconfig'
-Plug 'ray-x/go.nvim'
-Plug 'ray-x/guihua.lua'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'sindrets/diffview.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'lewis6991/gitsigns.nvim'
@@ -158,4 +157,6 @@ function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+
 

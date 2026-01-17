@@ -14,10 +14,14 @@ end
 
 local language_servers = {
 	gopls = {
-		gopls = {
-			buildFlags = { "-tags=integration" },
-		},
-	},
+	   gopls = {
+	      analyses = {
+		unusedparams = true,
+	      },
+	      staticcheck = true,
+	      gofumpt = true,
+	    },
+    	},
 	clangd = {},
 	terraformls = {},
 	basedpyright = {
