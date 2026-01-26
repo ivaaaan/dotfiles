@@ -12,6 +12,8 @@ end
 -- LSP and Telescope mappings
 map("n", "gD", vim.lsp.buf.declaration)
 map("n", "gd", vim.lsp.buf.definition)
+vim.keymap.set("n", "gt", "<cmd>tab split | lua vim.lsp.buf.definition()<CR>", {})
+
 map("n", "<space>rn", vim.lsp.buf.rename)
 map("n", "<space>ca", vim.lsp.buf.code_action)
 map("n", "[d", vim.diagnostic.goto_prev)
