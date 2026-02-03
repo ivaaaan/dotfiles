@@ -14,6 +14,7 @@ end
 
 local language_servers = {
 	gopls = {
+	   filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
 	   gopls = {
 	      analyses = {
 		unusedparams = true,

@@ -39,6 +39,7 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'} 
 Plug 'greggh/claude-code.nvim'
 Plug 'mrcjkb/rustaceanvim'
+Plug 'olexsmir/gopher.nvim'
 call plug#end()
 
 lua <<EOF
