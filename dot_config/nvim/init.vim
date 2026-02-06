@@ -20,7 +20,6 @@ Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 Plug 'neovim/nvim-lspconfig'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'sindrets/diffview.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'lewis6991/gitsigns.nvim'
@@ -39,8 +38,9 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'} 
 Plug 'greggh/claude-code.nvim'
 Plug 'mrcjkb/rustaceanvim'
-Plug 'olexsmir/gopher.nvim'
 Plug 'wtfox/jellybeans.nvim'
+Plug 'ray-x/go.nvim'
+Plug 'ray-x/guihua.lua'
 call plug#end()
 
 lua <<EOF
@@ -91,19 +91,6 @@ require('fzf-lua').setup({ winopts = { split = 'botright new', preview = {
 }})
 
 
--- require("conform").setup({
---   formatters_by_ft = {
---     lua = { "stylua" },
---     python = { "black" },
---     rust = { "rustfmt", lsp_format = "fallback" },
---     javascript = { "prettierd", "prettier", stop_after_first = true },
---     go = { "gofmt", "gofumpt", lsp_format = "fallback"},
---     html = {"superhtml"},
---     css = {
--- 	command = "stylelint --config=$HOME/.stylelintrc.js"
---     }
---   },
--- })
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
   callback = function(args)
