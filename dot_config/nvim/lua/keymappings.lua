@@ -58,3 +58,5 @@ map("n", "<Leader>gp", "<cmd> Git push<CR>")
 map("n", "<Space>e", "<cmd>lua vim.diagnostic.open_float()<CR>")
 
 map("n", "DH", "<cmd> DiffviewFileHistory %<cr>")
+map("n", "DC", "<cmd> DiffviewClose<cr>")
+map("n", "DO", "<cmd> DiffviewOpen<cr>")
