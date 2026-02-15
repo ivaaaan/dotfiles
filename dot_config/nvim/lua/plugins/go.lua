@@ -1,6 +1,6 @@
 require('go').setup({
   lsp_gofumpt = true,
-  lsp_on_attach = true,
+  -- lsp_on_attach = true,
 })
 
 local format_sync_grp = vim.api.nvim_create_augroup("goimports", {})

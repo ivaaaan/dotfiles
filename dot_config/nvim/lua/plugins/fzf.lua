@@ -1,3 +1,5 @@
+require("fzf-lua").setup({})
+
 vim.keymap.set('n', '<leader>gw', function()
   local output = vim.fn.systemlist('git worktree list --porcelain')
   local worktrees = {}
