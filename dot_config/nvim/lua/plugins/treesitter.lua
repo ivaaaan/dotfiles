@@ -1,4 +1,4 @@
-local filetypes = { 'rust', 'javascript', 'c', 'python', 'go', 'lua', 'toml'}
+local filetypes = { 'rust', 'javascript', 'c', 'python', 'go', 'lua', 'toml', 'terraform', 'yaml', 'json', 'markdown', 'make' }
 require('nvim-treesitter').install(filetypes)
 
 
