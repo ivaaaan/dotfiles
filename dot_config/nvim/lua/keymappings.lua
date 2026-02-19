@@ -1,13 +1,4 @@
-function map(mode, lhs, rhs, opts)
-	-- default options
-	local options = { noremap = true }
-
-	if opts then
-		options = vim.tbl_extend("force", options, opts)
-	end
-
-	vim.keymap.set(mode, lhs, rhs, options)
-end
+local map = require("utils").map
 
 -- LSP and Telescope mappings
 map("n", "gD", vim.lsp.buf.declaration)
@@ -60,3 +51,4 @@ map("n", "<Space>e", "<cmd>lua vim.diagnostic.open_float()<CR>")
 map("n", "DH", "<cmd> DiffviewFileHistory %<cr>")
 map("n", "DC", "<cmd> DiffviewClose<cr>")
 map("n", "DO", "<cmd> DiffviewOpen<cr>")
+

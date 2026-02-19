@@ -24,6 +24,8 @@ Plug 'ray-x/go.nvim'
 Plug 'ray-x/guihua.lua'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'mfussenegger/nvim-dap'
+Plug 'leoluz/nvim-dap-go'
 call plug#end()
 
 lua <<EOF
@@ -52,6 +54,7 @@ require "plugins/chadtree"
 require "plugins/conform"
 require "plugins/colorscheme"
 require "plugins/context"
+require "plugins/dap"
 require "plugins/diffview"
 require "plugins/fzf"
 require "plugins/gitsigns"
@@ -88,6 +91,8 @@ nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <C-t> :tabnew<CR>
 nnoremap <C-x> :tabclose<CR>
+
+set splitright
 
 map <up> <C-w><up>
 map <down> <C-w><down>
