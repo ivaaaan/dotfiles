@@ -26,6 +26,7 @@ Plug 'rebelot/kanagawa.nvim'
 Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'mfussenegger/nvim-dap'
 Plug 'leoluz/nvim-dap-go'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 lua <<EOF
@@ -48,6 +49,7 @@ vim.wo.number = true
 
 require "lsp"
 require "keymappings"
+require "commands"
 
 require "plugins/autopairs"
 require "plugins/chadtree"
