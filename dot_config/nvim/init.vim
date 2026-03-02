@@ -27,6 +27,7 @@ Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'mfussenegger/nvim-dap'
 Plug 'leoluz/nvim-dap-go'
 Plug 'tpope/vim-fugitive'
+Plug 'folke/persistence.nvim'
 call plug#end()
 
 lua <<EOF
@@ -65,6 +66,7 @@ require "plugins/lsp_signature"
 require "plugins/lualine"
 require "plugins/treesitter"
 require "plugins/trouble"
+require "plugins/persistence"
 EOF
 
 highlight Normal ctermbg=NONE
