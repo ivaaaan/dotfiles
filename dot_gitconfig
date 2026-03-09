@@ -15,3 +15,5 @@
 	sort = -committerdate
 [push]
 	useForceIfIncludes = true
+	autoSetupRemote = true
+
