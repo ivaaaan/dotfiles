@@ -1,0 +1,17 @@
+[user]
+	email = hello@iillexial.me
+	name = Ivan Klymenchenko
+	signingkey = 4C1D01DE27C2E8FEBB1368DFA4C7D624BD355829
+[alias]
+	staash = stash --all
+	feature = "!git fetch origin && git checkout -b \"$1\" origin/main #"
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[push]
+	useForceIfIncludes = true
